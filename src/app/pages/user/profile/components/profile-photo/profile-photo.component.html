@@ -1,0 +1,20 @@
+<div class="flex-none w-auto max-w-full px-3">
+    <div
+        class="image-upload text-size-base ease-soft-in-out   relative inline-flex items-center justify-center rounded-full text-white transition-all duration-200">
+        <label for="file-input">
+            <img alt="profile" class="avatar shadow-soft-sm rounded-full" [width]="150" [height]="150"
+                [src]="userPhoto  ?  baseUrl + '/'+ userPhoto  : 'https://avatar.tobi.sh/skymal'  " />
+        </label>
+
+        <input id="file-input" #inputFileAvatarUser type="file" (change)="userAvatarSelected($any($event))"
+            accept="image/*" />
+    </div>
+</div>
+
+<swal #swalUploadPhoto [title]="'Actualizar Foto'" [showCancelButton]="true" [focusCancel]="true"
+    [confirmButtonText]="'Confirmar'" [cancelButtonText]="'Cancelar'" (confirm)="uploadPhoto()">
+    <ng-container *swalPortal="swalPortalTargets.content">
+        <img id="swalPhotoUser" class="rounded-full max-w-full" 
+            [src]="swalPhotoUser" />
+    </ng-container>
+</swal>

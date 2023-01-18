@@ -1,0 +1,51 @@
+<section class="text-gray-600 body-font" [formGroup]="searchBookForm">
+    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+
+        <div class="flex w-full justify-center items-end">
+            <div class="relative mr-4 lg:w-full xl:w-full md:w-full text-left">
+                <input type="text" placeholder="Busca por ISBN o Titulo" formControlName="search"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded focus:ring-2 focus:ring-indigo-200 focus:bg-transparent border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:text-gray-500">
+            </div>
+
+
+            <div class="flex ml-6 items-center">
+                <div class="relative">
+                    <select formControlName="order"
+                        class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                        <option [value]="1">Menor Precio</option>
+                        <option [value]="-1">Mayor Precio</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+<app-books *ngIf="isContentLoaded ; else contentLoad " [listBooks]="listBooks" [paginationMeta]="paginationMeta"
+    (pageChange)="onPageChange($event)"></app-books>
+
+<div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" *ngIf="isContentLoaded && paginationMeta?.pageCount == 0 ">
+    <div class="text-center">
+        <p class="text-3xl font-bold tracking-tight text-gray-400 sm:text-4xl"> No hay resultado para su busqueda </p>
+    </div>
+</div>
+
+<ng-template #contentLoad>
+    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" style="padding-top: 0px;">
+
+        <ngx-skeleton-loader count="16" appearance="circle" animation="pulse" class="search-book-skeleton" [theme]="{
+                'width.px': 265,
+                'height.px': 385,
+                'border-radius': '10px',
+                'margin-top': '2.5em',
+                'margin-right': '2em' }">
+        </ngx-skeleton-loader>
+    </div>
+</ng-template>

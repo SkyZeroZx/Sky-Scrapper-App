@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  skyscrapperapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: sky-scrapper-app
+    container_name: sky-scrapper-app
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - "7575:80"

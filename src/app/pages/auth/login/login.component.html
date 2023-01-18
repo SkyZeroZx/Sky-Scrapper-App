@@ -1,0 +1,53 @@
+<main class="w-screen h-screen grid grid-cols-1 lg:grid-cols-2">
+    <section class="place-items-center  bg-primary-gradient  hidden lg:grid">
+        <img src="assets/images/logo-login.svg" class="w-full" alt="Phone image" />
+        <small><a href="https://storyset.com/phone" class="text-gray-700 dark:text-gray-300">Phone illustrations by
+                Storyset</a></small>
+    </section>
+    <section class="grid place-items-center bg-white dark:bg-slate-700">
+        <div class="max-w-lg lg:w-10/12 ">
+            <header class="mb-6 flex justify-center">
+                <img src="assets/images/logo.svg" alt="Sky-Scrapper" width="55" height="55" class="rounded-full" />
+                <p class="text-gray-700 text-lg dark:text-gray-300">Sky Scrapper</p>
+            </header>
+            <form class="p-6 bg-white dark:bg-slate-700 rounded-md" [formGroup]="loginForm">
+                <div class="form-group">
+                    <label for="email" class="dark:text-gray-400">Email</label>
+                    <input class="w-full" type="email" placeholder="Email" formControlName="email" />
+                </div>
+                <div class="form-group  w-full ">
+                    <label for="password" class="dark:text-gray-400">Password</label>
+                    <input class="w-full" type="password" placeholder="Password" formControlName="password" />
+                </div>
+
+                <footer class="flex  justify-between  space-x-4 mt-4">
+                    <button type="button"
+                        class="flex w-full items-center justify-center rounded-md    bg-slate-200	  px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-slate-300"
+                        routerLink="/">Cancelar</button>
+                    <button type="button" (click)="logIn()" [disabled]="loginForm.invalid"
+                        class="btn flex w-full  cursor-pointer  justify-center inline-block  rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">
+                        Login
+                    </button>
+
+                </footer>
+                <div class="flex  justify-center  space-x-4 mt-4">
+                    <button type="button" (click)="startAuthentication()" [disabled]="!isFingerprint"
+                        class="btn flex  cursor-pointer  justify-center inline-block  rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">
+                        <i style="color:whitesmoke !important" class="fa-solid fa-fingerprint"></i>
+                    </button>
+                </div>
+
+            </form>
+            <div class="mt-8">
+                <p class="text-center text-gray-500 dark:text-gray-400">
+                    Aun no tienes cuenta ? <a routerLink="/auth/register"
+                        class="text-primary font-medium">Registrarse</a>
+                </p>
+                <p class="text-center text-gray-500 dark:text-gray-400">
+                    Olvidaste tu contraseña ? <a routerLink="/auth/forgot-password"
+                        class="text-primary font-medium">Restablecer</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</main>

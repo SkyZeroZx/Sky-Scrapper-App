@@ -1,0 +1,59 @@
+<div class="w-full px-6 py-6 mx-auto loopple-min-height-78vh text-slate-500 pt-12 mt-12">
+    <div
+        class="relative flex flex-col flex-auto min-w-0 p-5 overflow-hidden break-words  lg:m-4 lg:ml-6 lg:p-6 shadow-blur rounded-2xl bg-slate-100 dark:bg-slate-800">
+        <div class="flex flex-wrap">
+            <app-profile-photo [userPhoto]="getPhoto" (updatePhoto)="getProfile()"></app-profile-photo>
+            <div class="flex-none w-auto max-w-full px-3 my-auto">
+                <div class="h-full">
+                    <h5 class="mb-1">{{this.profileForm.value.firstName + ' ' + this.profileForm.value.lastName }}</h5>
+                    <p class="mb-0 font-semibold leading-normal text-size-sm">{{this.profileForm.value.role}}</p>
+                </div>
+            </div>
+            <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full lg:p-6 lg:mt-6  p-2 lg:ml-2">
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full p-2  lg-max:mt-6 xl:w-[24%] ">
+                <div
+                    class="relative flex flex-col h-full min-w-0 break-words bg-slate-100 dark:bg-slate-800 border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-4 pb-0 mb-0 bg-slate-100 dark:bg-slate-800 border-b-0 rounded-t-2xl">
+                        <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Opciones</h6>
+                    </div>
+                    <app-profile-options></app-profile-options>
+                </div>
+            </div>
+
+            <div class="flex-auto p-2">
+                <div
+                    class="relative flex flex-col h-full min-w-0 break-words bg-slate-100 dark:bg-slate-800 border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-4 pb-0 mb-0 bg-slate-100 dark:bg-slate-800 border-b-0 rounded-t-2xl">
+                        <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Datos</h6>
+                    </div>
+                    <div class="flex-auto">
+                        <form class="p-6 bg-slate-100 dark:bg-slate-800  rounded-md" [formGroup]="profileForm">
+                            <div class="form-group">
+                                <label for="lastName">Nombres</label>
+                                <input class="w-full" type="email" placeholder="Nombres" formControlName="firstName" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Apellidos</label>
+                                <input class="w-full" type="email" placeholder="Apellidos" formControlName="lastName" />
+                            </div>
+
+                            <footer class="flex justify-end space-x-4 mt-4">
+                                <button type="button" [disabled]="profileForm.invalid" (click)="updateProfile()"
+                                    class="btn inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">
+                                    Actualizar
+                                </button>
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<header class="bg-white  dark:bg-slate-800 ">
+  <div *ngIf="menuOpen | async" class="overlay w-screen h-screen fixed top-0 left-0 bg-black opacity-25 z-30"></div>
+  <section class="flex items-stretch space-x-10" [formGroup]="userOptionsForm">
+    <div class="menu-open flex items-center relative">
+      <button class="flex mr-2 lg:hidden" (click)="menuOpen.next(true)" id="side-bar-btn" aria-label="side-bar-bt">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <img src="assets/images/logo.svg" alt="Sky Scrapper" width="55" height="55" class="rounded-full" />
+    </div>
+    <nav class="dark:bg-slate-800 flex-1 flex items-center text-gray-400 font-medium relative"
+      [class.open]="menuOpen | async">
+      <button id="btn-close" aria-label="btn-close" class="menu-close lg:hidden absolute top-4 right-4"
+        (click)="menuOpen.next(false)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <ol class="list-none flex items-center gap-6">
+
+        <li>
+          <a class="flex items-center space-x-2" routerLinkActive="text-gray-800 dark:text-gray-200"
+            [routerLink]="['/']" (click)="menuOpen.next(false)" [routerLinkActiveOptions]="{ exact: true }">
+            <p>Inicio</p>
+          </a>
+        </li>
+
+        <ng-container *ngFor="let item of menu">
+          <li>
+            <a class="flex items-center space-x-2" (click)="menuOpen.next(false)" [routerLink]="item.link"
+              routerLinkActive="text-gray-800 dark:text-gray-200">
+              <p>{{ item.label }}</p>
+            </a>
+          </li>
+        </ng-container>
+        <li>
+          <div class="flex items-center space-x-2">
+            <i [class]="userOptionsForm.value.userTheme ? 'fas fa-moon' : 'fas fa-sun' "></i>
+
+            <label style="cursor: pointer;">
+              <div class="relative">
+                <input id="theme" aria-label="theme" formControlName="userTheme" (change)="onChangeTheme($event)"
+                  type="checkbox" class="sr-only" />
+                <div id="inline" class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+              </div>
+            </label>
+          </div>
+        </li>
+      </ol>
+
+    </nav>
+  </section>
+  <section class="flex space-x-6 items-center" *ngIf="isLoggedIn; else userNotLogged">
+
+    <ng-container>
+      <div class="flex items-center space-x-2 cursor-pointer" [tippy]="userDropdown" placement="bottom-start"
+        variation="menu" [offset]="[-10, 10]">
+        <img [src]="user?.image ?  baseUrlProfile+ user.image : 'https://avatar.tobi.sh/nextjs'" alt="user" width="40"
+          height="40" class="rounded-full" />
+        <div class="flex items-center space-x-2">
+          <div class="flex flex-col items-end">
+            <p class="text-sm font-medium text-gray-400">{{user?.firstName }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </section>
+</header>
+<ng-template #userDropdown let-hide>
+  <div class="flex flex-col w-48">
+    <div class="dropdown-item" [routerLink]="['user/list-wish']" (click)="hide()">Lista de Deseos</div>
+    <div class="dropdown-item" [routerLink]="['user/profile']" (click)="hide()">Perfil</div>
+    <div class="dropdown-item" [routerLink]="['auth/change-password']" (click)="hide()">Cambiar Contraseña</div>
+    <div class="text-red-600 dropdown-item" (click)=" hide() ; logOut()">Logout</div>
+  </div>
+</ng-template>
+
+<ng-template #userNotLogged>
+  <section class="flex space-x-6 items-center">
+    <ng-container>
+
+      <div class="flex items-center space-x-2">
+        <div class="flex flex-col items-end">
+          <button [routerLink]="['/auth/register']"
+            class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
+            Registrarse
+          </button>
+        </div>
+        <button type="button" [routerLink]="['/auth/login']"
+          class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2  text-sm  font-medium text-white shadow-sm hover:bg-indigo-700  sm:ml-3 sm:w-auto sm:text-sm">
+          LogIn
+        </button>
+
+      </div>
+    </ng-container>
+  </section>
+</ng-template>

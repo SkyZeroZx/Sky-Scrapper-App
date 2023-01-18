@@ -1,0 +1,10 @@
+/*Toggle animation switch true or false */
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #3e76df;
+}
+
+input:checked ~ #inline {
+  background-color: #3e76df;
+}

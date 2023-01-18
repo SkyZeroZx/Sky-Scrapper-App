@@ -1,0 +1,40 @@
+<div class="bg-white dark:bg-slate-700">
+
+    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" style="padding-top: 0px;">
+
+
+        <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <article style="cursor: pointer;" (click)="getBookSelected(book)"
+                class="dark:bg-slate-800 group relative  p-4 rounded-md border transition-all hover:shadow-xl duration-200 ease-in  bg-white shadow-lg hover:border-gray-400 relative"
+                *ngFor="let book of listBooks | paginate: { itemsPerPage: 16, totalItems : paginationMeta?.itemCount,  currentPage: paginationMeta?.page }">
+
+
+                <div
+                    class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-80 lg:aspect-none lg:h-80">
+                    <img imgHideMissing [ngSrc]="book?.image" [alt]="book.bookDetails[0].title" [width]="300"
+                        [height]="300" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                </div>
+
+                <div class="mt-4 flex justify-between">
+                    <div>
+                        <h3 class="text-sm text-gray-800">
+
+                            <span aria-hidden="true" class="absolute inset-0 "></span>
+                            <p class="text-gray-500"> {{book?.bookDetails[0]?.title}} </p>
+
+                        </h3>
+                        <p class="mt-1 text-sm text-gray-500"> {{book?.bookDetails[0]?.editorial}}</p>
+                    </div>
+                    <p class="text-sm font-medium dark:text-slate-400"> S/ {{book?.bookDetails[0]?.price}} </p>
+                </div>
+            </article>
+
+        </div>
+        <div class="flex w-full justify-center items-end mt-12 " *ngIf="paginationMeta?.itemCount">
+            <pagination-controls (pageChange)="  onPageChange($event)" class="paginator" previousLabel="Anterior"
+                nextLabel="Siguiente" [responsive]="true"></pagination-controls>
+        </div>
+
+    </div>
+
+</div>

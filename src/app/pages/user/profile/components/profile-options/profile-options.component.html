@@ -1,0 +1,63 @@
+<div class="flex-auto p-4 " [formGroup]="profileOptionsForm">
+    <ul class="flex flex-col justify-center  pl-0 mb-0 rounded-lg">
+
+        <div class="flex items-center  space-x-3 m-4 lg:pt-14">
+            <label class="cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input id="notifications" aria-label="notifications" type="checkbox"
+                        (change)="suscribeNotifications($event)" class="sr-only" formControlName="notifications" />
+                    <!-- line -->
+                    <div id="inline" class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                    <!-- dot -->
+                    <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
+                    </div>
+                </div>
+            </label>
+            <label for="notifications"
+                class="w-4/5 mb-0 ml-4 overflow-hidden font-normal cursor-pointer select-none text-size-sm text-ellipsis whitespace-nowrap text-slate-500">
+                <i class="fa-solid fa-bell"></i> Notificaciones
+            </label>
+        </div>
+        <div class="flex items-center  space-x-3 m-4">
+            <label class="cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input id="fingerprint" aria-label="fingerprint" type="checkbox"
+                        (change)="onChangeFingerPrint($event)" class="sr-only" formControlName="fingerprint" />
+                    <!-- line -->
+                    <div id="inline" class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                    <!-- dot -->
+                    <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
+                    </div>
+                </div>
+            </label>
+            <label for="fingerprint"
+                class="w-4/5 mb-0 ml-4 overflow-hidden font-normal cursor-pointer select-none text-size-sm text-ellipsis whitespace-nowrap text-slate-500">
+                <i class="fa-solid fa-fingerprint"></i> FingerPrint
+            </label>
+        </div>
+
+        <div class="flex items-center space-x-3 m-4" *ngIf="shouldInstall()">
+            <label class="cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                    <!-- input -->
+                    <input id="install-pwa" aria-label="install-pwa" type="checkbox"
+                        (change)="onChangeInstallPwa($event)" formControlName="userInstallPwa" class="sr-only" />
+                    <!-- line -->
+                    <div id="inline" class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                    <!-- dot -->
+                    <div class="dot absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition">
+                    </div>
+                </div>
+            </label>
+            <label for=" follow"
+                class="w-4/5 mb-0 ml-4 overflow-hidden font-normal cursor-pointer select-none text-size-sm text-ellipsis whitespace-nowrap text-slate-500">
+                <i class="fa fa-cloud-download"></i> Instalar
+            </label>
+        </div>
+    </ul>
+</div>

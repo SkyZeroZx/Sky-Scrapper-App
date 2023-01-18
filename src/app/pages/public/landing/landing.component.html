@@ -1,0 +1,21 @@
+<!-- (mousewheel)="handleScroll($event)" (scroll)="handleScroll($event)" (scroll)="handleScroll($event)" (touchmove)="handleScroll($event)" -->
+<app-carrousel></app-carrousel>
+
+<ng-container>
+  <div *ngIf="isContentLoad">
+    <div class="sm:text-center pt-8 pb-6 mt-6">
+      <p class="text-3xl font-bold tracking-tight text-gray-300 sm:text-4xl">
+        Loading ....
+      </p>
+    </div>
+  </div>
+
+  <ng-component #featureSection>
+  </ng-component>
+
+  <ng-component #book>
+  </ng-component>
+
+
+
+</ng-container>

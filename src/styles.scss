@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~tippy.js/dist/tippy.css";
+// @import "~tippy.js/themes/light.css";
+// @import "~tippy.js/animations/scale.css";
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "./../src/app/styles/partials/buttons";
+@import "./../src/app/styles/partials/icons";
+@import "./../src/app/styles/partials/dialog";
+@import "./../src/app/styles/partials/scrollbar";
+@import "./../src/app/styles/partials/poppers";
+@import "./../src/app/styles/partials/forms";
+@import "./../src/app/styles/partials/select";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  @apply text-gray-800;
+  overflow-x: hidden;
+}
+
+:root {
+  --header-height: 64px;
+}
+
+.dark > {
+  body {
+    background-color: #364154;
+    .border {
+      border-width: 0px;
+    }
+    i {
+      color: #49556b !important;
+    }
+  }
+}
+
+.box {
+  @apply mx-auto;
+  @media only screen and (min-width: 960px) {
+    max-width: 900px;
+  }
+  @media only screen and (min-width: 1440px) {
+    max-width: 1400px;
+    /* styles for browsers larger than 1440px; */
+  }
+  @media only screen and (min-width: 2000px) {
+    max-width: 1600px;
+    /* for sumo sized (mac) screens */
+  }
+}
+
+.dark {
+  .search-book-skeleton {
+    span {
+      background-color: #20293a !important;
+      border: 1px solid #20293a !important;
+      color: black;
+    }
+  }
+
+  /*Estilos paginator*/
+  .paginator {
+    span {
+      color: #979fa3 !important;
+    }
+    a {
+      color: #979fa3 !important;
+    }
+    .current {
+      background-color: #49556b !important;
+
+      span {
+        color: whitesmoke !important;
+      }
+    }
+  }
+}

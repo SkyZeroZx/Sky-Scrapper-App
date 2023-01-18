@@ -1,0 +1,34 @@
+<div class="lg w-full mx-auto overflow-auto pt-5 mt-6">
+    <table class="table-auto w-full text-left whitespace-no-wrap ">
+        <thead>
+            <tr>
+                <th
+                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 dark:bg-slate-400 rounded-tl rounded-bl">
+                    Tienda</th>
+                <th
+                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 dark:bg-slate-400 ">
+                    Producto</th>
+                <th
+                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 dark:bg-slate-400 ">
+                    Precio</th>
+
+                <th
+                    class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br dark:bg-slate-400 ">
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let book of listBookDetails">
+            <tr>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{{book?.shop}}</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{{book?.title}}</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{{book?.price}}</td>
+
+                <td class="w-10 text-center">
+                    <a [href]="book?.linkProduct" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 sm:ml-3 sm:w-auto sm:text-sm">Comprar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
