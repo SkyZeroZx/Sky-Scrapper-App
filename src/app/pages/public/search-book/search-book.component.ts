@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { QUERY_PARAMS_PAGINATON } from '@core/constants/constant';
+import { QUERY_PARAMS_PAGINATON } from '@core/constants';
 import {
   Book,
   PaginationMetaParams,
@@ -14,7 +14,7 @@ import { BookService } from '@core/services';
   templateUrl: './search-book.component.html',
   styleUrls: ['./search-book.component.scss'],
 })
-export class SearchBookComponent implements OnInit , OnDestroy {
+export class SearchBookComponent implements OnInit {
   searchBookForm: FormGroup;
   isContentLoaded: boolean = false;
 
@@ -22,9 +22,6 @@ export class SearchBookComponent implements OnInit , OnDestroy {
   paginationMeta: PaginationMetaParams;
   listBooks: Book[] = [];
   constructor(private fb: FormBuilder, private bookService: BookService) {}
-  ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
 
   ngOnInit(): void {
     this.createFormSearchBook();
@@ -65,10 +62,6 @@ export class SearchBookComponent implements OnInit , OnDestroy {
         this.listBooks = data;
         this.paginationMeta = meta;
         this.isContentLoaded = true;
-        console.log('My Books Query is', data);
-      },
-      error: (_err) => {
-        console.log('error is ', _err);
       },
     });
   }

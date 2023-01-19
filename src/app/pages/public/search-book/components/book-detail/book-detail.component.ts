@@ -47,8 +47,7 @@ export class BookDetailComponent implements OnInit {
         this.isContentLoaded = true;
         this.listBookDetails = res;
         this.filterData();
-      },
-      error: (_err) => {},
+      }
     });
   }
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ALL_ROLES } from '../../core/constants';
 
 export const publicRoutes: Routes = [
   {
@@ -24,7 +23,7 @@ export const publicRoutes: Routes = [
     path: '',
     loadChildren: () =>
       import('../public/landing/landing.module').then((m) => m.LandingModule),
-  },
+  } 
 ];
 
 @NgModule({

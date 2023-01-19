@@ -14,9 +14,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        data: {
-          role: [...ALL_ROLES],
-        },
         loadChildren: () =>
           import('../app/pages/public/public.module').then(
             (m) => m.PublicModule
@@ -44,10 +41,10 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  // },
 ];
 
 @NgModule({

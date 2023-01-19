@@ -10,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  getPhoto : string = null;
+  getPhoto: string = null;
+  isLoadingContent: boolean = false;
+
   constructor(
     private toastService: ToastrService,
     private userService: UserService,
@@ -23,10 +25,12 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile() {
+    this.isLoadingContent = false;
     this.userService.getProfile().subscribe({
       next: (res) => {
         this.profileForm.patchValue(res);
-        this.getPhoto = res.image
+        this.getPhoto = res.image;
+        this.isLoadingContent = true;
       },
     });
   }

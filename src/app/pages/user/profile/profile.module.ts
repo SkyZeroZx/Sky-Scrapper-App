@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileOptionsComponent } from './components/profile-options/profile-options.component';
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     CommonModule,
     FormsModule,
     SweetAlert2Module,
+    NgxSkeletonLoaderModule,
     ReactiveFormsModule,
     ProfileRoutingModule
   ]
