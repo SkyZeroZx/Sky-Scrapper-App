@@ -25,3 +25,10 @@ export interface BookDetails {
 
   title: string;
 }
+
+export interface BookDiscount {
+  price: number;
+  title: string;
+  isbn: string;
+  image: string;
+}

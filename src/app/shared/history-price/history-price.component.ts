@@ -12,15 +12,15 @@ import { ListHistoryPrice } from '@core/interfaces';
 export class HistoryPriceComponent {
   @Input()
   listHistoryPrice: ListHistoryPrice;
-
-  lineChartType: ChartType = 'line';
   @ViewChild(BaseChartDirective)
   chart: BaseChartDirective;
-  public lineChartData: ChartConfiguration['data'] = {
+  lineChartOptions: ChartConfiguration['options'] = lineChartOptions;
+  lineChartType: ChartType = 'line';
+
+  lineChartData: ChartConfiguration['data'] = {
     datasets: [],
     labels: [],
   };
-  lineChartOptions: ChartConfiguration['options'] = lineChartOptions;
 
   ngOnChanges(): void {
     this.loadLinearChart();

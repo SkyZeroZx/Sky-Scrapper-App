@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { USER_OPTIONS } from '@core/constants';
 
@@ -14,8 +13,7 @@ export class ThemeService {
   // Declare event of listening for install pwa in toggle in user options
   public promptEvent: any;
   constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private toastService: ToastrService
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   get getInstallPwa() {
@@ -57,7 +55,6 @@ export class ThemeService {
       });
     } catch (error) {
       console.error('error shared', error);
-      this.toastService.error('Sucedio un error al intentar compartir');
     }
   }
 }

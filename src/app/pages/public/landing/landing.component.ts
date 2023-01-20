@@ -19,12 +19,12 @@ export class LandingComponent implements AfterContentInit {
   listBooks: Book[] = [];
   isContentLoad: boolean = true;
   queryParams: QueryParamsPagination = QUERY_PARAMS_PAGINATON;
-  constructor(private readonly bookService: BookService) {}
-
   @ViewChild('featureSection', { read: ViewContainerRef })
   productListcontainer: ViewContainerRef;
   @ViewChild('book', { read: ViewContainerRef })
   getStartedcontainerBooks: ViewContainerRef;
+
+  constructor(private readonly bookService: BookService) {}
 
   private loadFeatureSection() {
     const instance = this.getStartedcontainerBooks.createComponent(
@@ -50,9 +50,6 @@ export class LandingComponent implements AfterContentInit {
         this.isContentLoad = false;
         this.loadFeatureSection();
         this.loadBooks();
-      },
-      error: (_err) => {
-        console.log('error is ', _err);
       },
     });
   }

@@ -42,6 +42,7 @@ export class SearchBookComponent implements OnInit {
       .pipe(debounceTime(800), distinctUntilChanged())
       .subscribe((search: string) => {
         this.queryParams.search = search;
+        this.queryParams.page = 1;
         this.getBooks();
       });
   }

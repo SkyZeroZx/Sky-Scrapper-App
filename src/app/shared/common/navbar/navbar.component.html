@@ -5,7 +5,7 @@
       <button class="flex mr-2 lg:hidden" (click)="menuOpen.next(true)" id="side-bar-btn" aria-label="side-bar-bt">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <img src="assets/images/logo.svg" alt="Sky Scrapper" width="55" height="55" class="rounded-full" />
+      <img src="assets/images/logo.svg" [alt]="'Sky Scrapper'" width="55" height="55" class="rounded-full" />
     </div>
     <nav class="dark:bg-slate-800 flex-1 flex items-center text-gray-400 font-medium relative"
       [class.open]="menuOpen | async">

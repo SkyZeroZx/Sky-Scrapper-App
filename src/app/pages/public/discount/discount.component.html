@@ -1,0 +1,16 @@
+<div class="pt-12">
+    <app-books *ngIf="isContentLoaded ; else contentLoad " [listBooks]="listBooks" [paginationMeta]="paginationMeta">
+    </app-books>
+</div>
+
+<ng-template #contentLoad>
+    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" style="padding-top: 0px;">
+        <ngx-skeleton-loader count="16" appearance="circle" animation="pulse" class="search-book-skeleton" [theme]="{
+                    'width.px': 265,
+                    'height.px': 385,
+                    'border-radius': '10px',
+                    'margin-top': '2.5em',
+                    'margin-right': '2em' }">
+        </ngx-skeleton-loader>
+    </div>
+</ng-template>

@@ -1,3 +1,4 @@
+export * from './SEO/seo.service';
 export * from './auth/auth.service';
 export * from './book/book.service';
 export * from './list-wish/list-wish.service';

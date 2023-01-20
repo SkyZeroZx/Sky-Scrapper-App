@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
       link: 'search-book',
     },
     {
+      label: 'Ofertas',
+      link: 'discount-book',
+    },
+    {
       label: 'Nosotros',
       link: 'about',
     },

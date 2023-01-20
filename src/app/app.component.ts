@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    console.log('new date' , new Date() );
     this.themeService.suscribeTheme();
   }
 

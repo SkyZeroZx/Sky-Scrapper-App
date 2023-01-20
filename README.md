@@ -21,6 +21,7 @@ Nota : Este es un proyecto con fines educativos sin fines de lucro
   - [Build](#build)
   - [Docker](#docker)
 - [Analisis de Codigo](#analisis-de-codigo-)
+- [Performance](#performance)
 - [Construido](#construido-con-)
 
 ## Comenzando 🚀
@@ -160,7 +161,13 @@ _Reporte de Cobertura en SonarQube_
 ![SonarQube 1](/docs/sonar/sonarqube-1.png)
 
 
+## Performance
 
+_Haciendo uso de la herramienta *https://pagespeed.web.dev/* , se evaluo el tiempo de carga y renderizado por primera vez de la web_
+
+_Obtuviendo un puntaje de **93** en rendimiento_
+
+![Performance PageSpeed](/docs/performance/performance.png)
 
 ## Construido con 🛠️
 
@@ -175,6 +182,7 @@ _Las herramientas utilizadas son:_
 - [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo on premise
 - [Prettier](https://prettier.io/) - Formateador de Codigo
 - [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
+- [WebAuthn](https://webauthn.guide/) - Estándar web del proyecto FIDO2 de la Alianza FIDO
 - [WebAuthn](https://webauthn.guide/) - Estándar web del proyecto FIDO2 de la Alianza FIDO
 
 ## Versionado 📌

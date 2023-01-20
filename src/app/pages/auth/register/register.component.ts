@@ -20,6 +20,10 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.createRegisterForm();
+  }
+
+  createRegisterForm() {
     this.signupForm = this.fb.group({
       firstName: [
         null,

@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BookService, ThemeService, ListWishService } from '@core/services';
+import {
+  BookService,
+  ThemeService,
+  ListWishService,
+  SEOService,
+} from '@core/services';
 import { BookDetails, ListHistoryPrice } from '@core/interfaces';
 import { ToastrService } from 'ngx-toastr';
+import { formatedBookDetail } from '@core/helper';
 
 @Component({
   selector: 'app-book-detail',
@@ -14,7 +20,6 @@ export class BookDetailComponent implements OnInit {
   bookDetails: BookDetails;
   isContentLoaded: boolean = false;
   listHistoryPrice: ListHistoryPrice;
-
   isWish: boolean = false;
 
   constructor(
@@ -22,33 +27,41 @@ export class BookDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private listWishService: ListWishService,
     private toastService: ToastrService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private seoService: SEOService
   ) {}
 
   ngOnInit(): void {
-    this.getRouteParams();
+    this.getRouterData();
   }
 
-  getRouteParams(): void {
-    this.activatedRoute.paramMap.subscribe((res) => {
-      const isbn = res.get('isbn');
-      if (localStorage.getItem('token')) {
-        this.getWish(isbn);
-      }
-      this.getChart(isbn);
-      this.getBookByIsbn(isbn);
-    });
-  }
-
-  getBookByIsbn(isbn: string) {
+  getRouterData(): void {
     this.isContentLoaded = false;
-    this.bookService.getBookByIsbn(isbn).subscribe({
+    this.activatedRoute.data.subscribe({
       next: (res) => {
-        this.isContentLoaded = true;
-        this.listBookDetails = res;
-        this.filterData();
-      }
+        const isbn: string = res['bookDetail'][0].isbn;
+        const title: string = res['bookDetail'][0].title;
+        const category: string = res['bookDetail'][0].category;
+        const description = title + ' ' + category;
+        this.getSEO(title, description);
+        if (localStorage.getItem('token')) {
+          this.getWish(isbn);
+        }
+        this.getChart(isbn);
+        this.getBookByIsbn(res['bookDetail']);
+      },
     });
+  }
+
+  getSEO(title: string, description: string) {
+    this.seoService.updateTitle(title);
+    this.seoService.updateDescription(description);
+  }
+
+  getBookByIsbn(bookDetails: BookDetails[]) {
+    this.isContentLoaded = true;
+    this.listBookDetails = bookDetails;
+    this.formatedBookDetail();
   }
 
   getChart(isbn: string) {
@@ -67,30 +80,8 @@ export class BookDetailComponent implements OnInit {
     });
   }
 
-  filterData() {
-    this.bookDetails = {
-      price: +this.getValueDefined('price'),
-
-      editorial: this.getValueDefined('editorial'),
-
-      isbn: this.getValueDefined('isbn'),
-
-      linkProduct: this.getValueDefined('linkProduct'),
-
-      category: this.getValueDefined('category'),
-
-      image: this.getValueDefined('image'),
-
-      shop: this.getValueDefined('shop'),
-
-      title: this.getValueDefined('title'),
-      
-      author: this.getValueDefined('author'),
-    };
-  }
-
-  getValueDefined(value: string) {
-    return this.listBookDetails.find((res) => res[value] !== 'null')[value];
+  formatedBookDetail() {
+    this.bookDetails = formatedBookDetail(this.listBookDetails);
   }
 
   sharedBook(title: string, isbn: string) {

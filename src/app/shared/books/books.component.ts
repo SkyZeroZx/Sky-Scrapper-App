@@ -19,12 +19,10 @@ export class BooksComponent {
   constructor(private router: Router) {}
 
   getBookSelected(book: Book) {
-    console.log('Book Selected', book);
     this.router.navigate(['search-book', book.isbn]);
   }
 
-  onPageChange($event : number) {
-   
+  onPageChange($event: number) {
     this.pageChange.emit($event);
   }
 }
