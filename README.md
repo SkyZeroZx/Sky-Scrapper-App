@@ -71,6 +71,10 @@ _Dirigirse a la ruta http://localhost:4200/#/login/ se tendra la pantalla de Log
 _Puede visualizar una demo en funcionamiento en el siguiente video que detalla los diferentes modulos_
 
 
+https://user-images.githubusercontent.com/73321943/213350821-224f0e70-c8fa-42a9-a4e0-38b1531f3ae3.mp4
+
+
+
 ## Ejecutando como PWA 👨🏻‍💻
 
 _Para ejecutar como PWA(Progressive Web App) , previamente debe tenerse instalado la libreria http-serve_
