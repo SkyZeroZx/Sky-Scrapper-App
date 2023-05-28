@@ -7,6 +7,7 @@ import {
 import { BookService } from '@core/services';
 import { QUERY_PARAMS_PAGINATON } from '@core/constants/constant';
 import { Book, QueryParamsPagination } from '@core/interfaces';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
@@ -49,11 +50,11 @@ export class LandingComponent implements AfterContentInit {
 
   getBooks() {
     this.bookService.getBooks(this.queryParams).subscribe({
-      next: ({ data }) => {
+      next: async ({ data }) => {
         this.listBooks = data;
         this.isContentLoad = false;
-        this.loadFeatureSection();
-        this.loadBooks();
+        await this.loadFeatureSection();
+        await this.loadBooks();
       },
     });
   }
