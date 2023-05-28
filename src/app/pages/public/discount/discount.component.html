@@ -1,16 +1,46 @@
 <div class="pt-12">
-    <app-books *ngIf="isContentLoaded ; else contentLoad " [listBooks]="listBooks" [paginationMeta]="paginationMeta">
-    </app-books>
+  <app-books
+    *ngIf="isContentLoaded; else contentLoad"
+    [listBooks]="listBooks"
+    [paginationMeta]="paginationMeta"
+  >
+  </app-books>
 </div>
 
 <ng-template #contentLoad>
-    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" style="padding-top: 0px;">
-        <ngx-skeleton-loader count="16" appearance="circle" animation="pulse" class="search-book-skeleton" [theme]="{
-                    'width.px': 265,
-                    'height.px': 385,
-                    'border-radius': '10px',
-                    'margin-top': '2.5em',
-                    'margin-right': '2em' }">
-        </ngx-skeleton-loader>
-    </div>
+  <div
+    class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+    style="padding-top: 0px"
+  >
+    <ngx-skeleton-loader
+      count="16"
+      appearance="circle"
+      animation="pulse"
+      class="search-book-skeleton"
+      [theme]="{
+        'width.px': 265,
+        'height.px': 385,
+        'border-radius': '10px',
+        'margin-top': '2.5em',
+        'margin-right': '2em'
+      }"
+    >
+    </ngx-skeleton-loader>
+  </div>
 </ng-template>
+
+<div
+  class="flex justify-center items-center text-center flex-wrap h-full g-6 text-gray-800"
+  *ngIf="isContentLoaded && listBooks?.length == 0"
+>
+  <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0 pt-16">
+    <p class="text-gray-600 dark:text-gray-300">
+      No encontramos ofertas por el momento
+    </p>
+    <img
+      src="assets/images/nothing.svg"
+      class="w-full"
+      alt="People illustrations"
+    />
+  </div>
+</div>

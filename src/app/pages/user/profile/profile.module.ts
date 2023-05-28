@@ -9,12 +9,11 @@ import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
-
 @NgModule({
   declarations: [
     ProfileComponent,
     ProfileOptionsComponent,
-    ProfilePhotoComponent
+    ProfilePhotoComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +21,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     SweetAlert2Module,
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}

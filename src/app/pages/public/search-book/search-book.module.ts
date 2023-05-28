@@ -8,7 +8,7 @@ import { ImgHideMissingModule } from '@core/directives';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ButtonWishModule } from '@shared/button-wish';
 import { BookDetailComponent, ListPriceComponent } from './components';
-import { HistoryPriceModule } from '../../../shared/history-price/history-price.module';
+import { HistoryPriceModule } from '@shared/history-price';
 
 @NgModule({
   declarations: [SearchBookComponent, BookDetailComponent, ListPriceComponent],

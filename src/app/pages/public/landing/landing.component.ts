@@ -7,8 +7,6 @@ import {
 import { BookService } from '@core/services';
 import { QUERY_PARAMS_PAGINATON } from '@core/constants/constant';
 import { Book, QueryParamsPagination } from '@core/interfaces';
-import { BooksComponent } from '@shared/books/books.component';
-import { FeatureSectionComponent } from './components/feature-section/feature-section.component';
 
 @Component({
   selector: 'app-landing',
@@ -26,14 +24,20 @@ export class LandingComponent implements AfterContentInit {
 
   constructor(private readonly bookService: BookService) {}
 
-  private loadFeatureSection() {
+  private async loadFeatureSection() {
+    const { FeatureSectionComponent } = await import(
+      './components/feature-section/feature-section.component'
+    );
+
     const instance = this.getStartedcontainerBooks.createComponent(
       FeatureSectionComponent
     );
     instance.setInput('listBooks', this.listBooks);
   }
 
-  private loadBooks() {
+  private async loadBooks() {
+    const { BooksComponent } = await import('@shared/books/books.component');
+
     const instance =
       this.getStartedcontainerBooks.createComponent(BooksComponent);
     instance.setInput('listBooks', this.listBooks);

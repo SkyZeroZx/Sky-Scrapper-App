@@ -154,7 +154,7 @@ Sonaqube >= 9.X
 
 ![SonarQube Properties](/docs/sonar/sonar-properties.png)
 
-_Las pruebas fueron realizas sobre *SonarQube 9.5* para ejecutar el analisis de codigo ejecutar el comando para la instancia local:_
+_Las pruebas fueron realizas sobre *SonarQube 9.8* para ejecutar el analisis de codigo ejecutar el comando para la instancia local:_
 
 ```
 npm run sonar
@@ -186,7 +186,6 @@ _Las herramientas utilizadas son:_
 - [SonarQube](https://www.sonarqube.org/) - Evaluacion de codigo on premise
 - [Prettier](https://prettier.io/) - Formateador de Codigo
 - [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
-- [WebAuthn](https://webauthn.guide/) - Estándar web del proyecto FIDO2 de la Alianza FIDO
 - [WebAuthn](https://webauthn.guide/) - Estándar web del proyecto FIDO2 de la Alianza FIDO
 
 ## Versionado 📌

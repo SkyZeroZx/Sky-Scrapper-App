@@ -8,8 +8,8 @@ export class HeartWishDirective {
 
   @HostListener('click')
   onClick() {
-    const element = this.buttonElement.nativeElement;
-    const isActive: boolean = element.classList.contains('active');
+    const element = this.buttonElement.nativeElement as HTMLElement;
+    const isActive = element.classList.contains('active');
     if (isActive) {
       element.classList.remove('active');
       element.classList.add('deactivate');

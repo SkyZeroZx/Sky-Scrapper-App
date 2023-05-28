@@ -1,6 +1,19 @@
 .image-upload > input {
   display: none;
 }
+
 .avatar {
   cursor: pointer !important;
+  border-radius: 50%;
+  height: 9.7em;
+  width: 9.7em;
+}
+
+
+.avatar-upload {
+  cursor: pointer !important;
+  display: inline-flex !important; 
+  border-radius: 50%;
+  height: 15.7em;
+  width: 15.7em;
 }

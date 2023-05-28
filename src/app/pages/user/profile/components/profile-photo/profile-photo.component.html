@@ -14,7 +14,7 @@
 <swal #swalUploadPhoto [title]="'Actualizar Foto'" [showCancelButton]="true" [focusCancel]="true"
     [confirmButtonText]="'Confirmar'" [cancelButtonText]="'Cancelar'" (confirm)="uploadPhoto()">
     <ng-container *swalPortal="swalPortalTargets.content">
-        <img id="swalPhotoUser" class="rounded-full max-w-full" 
+        <img id="swalPhotoUser" class="rounded-full max-w-full avatar-upload" 
             [src]="swalPhotoUser" />
     </ng-container>
 </swal>

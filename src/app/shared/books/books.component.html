@@ -5,7 +5,7 @@
 
         <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             <article style="cursor: pointer;" (click)="getBookSelected(book)"
-                class="dark:bg-slate-800 group relative  p-4 rounded-md border transition-all hover:shadow-xl duration-200 ease-in  bg-white shadow-lg hover:border-gray-400 relative"
+                class="dark:bg-slate-800 group p-4 rounded-md border transition-all hover:shadow-xl duration-200 ease-in  bg-white shadow-lg hover:border-gray-400 relative"
                 *ngFor="let book of listBooks | paginate: { itemsPerPage:  paginationMeta?.take, totalItems : paginationMeta?.itemCount,  currentPage: paginationMeta?.page }">
 
 
