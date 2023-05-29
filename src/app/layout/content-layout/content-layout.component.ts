@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from '@core/animations/router-animations';
+import { ScrollService } from '@core/services';
 
 @Component({
   selector: 'app-content-layout',
@@ -9,16 +10,24 @@ import { slideInAnimation } from '@core/animations/router-animations';
   animations: [slideInAnimation],
 })
 export class ContentLayoutComponent {
-  
   isFlyoutMenu = false;
   isMobileMenu = false;
-  constructor(private contexts: ChildrenOutletContexts) {}
+  constructor(
+    private contexts: ChildrenOutletContexts,
+    private scrollService: ScrollService
+  ) {}
 
   toggleFlyoutMenu() {
     this.isFlyoutMenu = !this.isFlyoutMenu;
   }
+
   toggleMobileMenu() {
     this.isMobileMenu = !this.isMobileMenu;
+  }
+
+  @HostListener('document:scroll', ['$event'])
+  handleScroll() {
+    this.scrollService.setEventScroll(true);
   }
 
   getRouteAnimationData() {

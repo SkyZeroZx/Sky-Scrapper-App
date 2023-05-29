@@ -1,29 +1,41 @@
-import {
-  AfterContentInit,
-  Component,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
-import { BookService } from '@core/services';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { BookService, ScrollService } from '@core/services';
 import { QUERY_PARAMS_PAGINATON } from '@core/constants/constant';
 import { Book, QueryParamsPagination } from '@core/interfaces';
-import { concat } from 'rxjs';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
 })
-export class LandingComponent implements AfterContentInit {
+export class LandingComponent implements OnInit {
   listBooks: Book[] = [];
-  isContentLoad: boolean = true;
-  queryParams: QueryParamsPagination = QUERY_PARAMS_PAGINATON;
+
+  isContentLoad = true;
+
+  queryParams: QueryParamsPagination = structuredClone(QUERY_PARAMS_PAGINATON);
+
   @ViewChild('featureSection', { read: ViewContainerRef })
   productListcontainer: ViewContainerRef;
+
   @ViewChild('book', { read: ViewContainerRef })
   getStartedcontainerBooks: ViewContainerRef;
 
-  constructor(private readonly bookService: BookService) {}
+  isScrolling = false;
+
+  constructor(
+    private readonly bookService: BookService,
+    private scrollService: ScrollService
+  ) {}
+
+  ngOnInit(): void {
+    this.scrollService.getEventScroll$.pipe(take(1)).subscribe({
+      next: (onScroll) => {
+        onScroll && this.handleScroll();
+      },
+    });
+  }
 
   private async loadFeatureSection() {
     const { FeatureSectionComponent } = await import(
@@ -44,8 +56,12 @@ export class LandingComponent implements AfterContentInit {
     instance.setInput('listBooks', this.listBooks);
   }
 
-  ngAfterContentInit(): void {
-    this.getBooks();
+  async handleScroll() {
+    if (!this.isScrolling) {
+      this.isScrolling = true;
+      this.getBooks();
+    }
+    this.isScrolling = true;
   }
 
   getBooks() {
